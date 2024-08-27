@@ -1,14 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import CartItemsContext from "../context/CartItemsContext";
-import useWindowWidth from "../hooks/useWindowWidth";
 import SpinnerLoader from "./SpinnerLoader";
 
 const ProduktItem = ({ productItem }) => {
-  const width = useWindowWidth();
-
   const { image, name, category, price } = productItem
   const { mobile, tablet, desktop } = image;
-  const [imagePath, setImagePath] = useState(image);
   const [imageLoading, setImageLoading] = useState(false);
 
   const mainBtnStyles = "absolute flex -bottom-5 w-[65%] py-2 rounded-full items-center";
@@ -19,21 +15,7 @@ const ProduktItem = ({ productItem }) => {
 
   // Check if the item is already in the cart
   const isInCart = cartItems.find((item) => item.id === productItem.id);
-
-  useEffect(() => {
-    const determineImagePath = () => {
-      if (width < 768) {
-        setImagePath(mobile);
-      } else if (width < 1024) {
-        setImagePath(tablet);
-      } else {
-        setImagePath(desktop);
-      }
-    };
-
-    determineImagePath();
-  }, [width, mobile, tablet, desktop]);
-
+  
   return (
     <li className="grid items-center gap-8">
       {!imageLoading &&
@@ -43,13 +25,17 @@ const ProduktItem = ({ productItem }) => {
         />
       }
       <div className="relative">
-        <img
-          className={`${isInCart && "border-2 border-main_red"} w-full rounded-main_rounded`}
-          src={imagePath}
-          alt={name}
-          loading="lazy"
-          onLoad={() => setImageLoading(true)}
-        />
+        <picture>
+          <source srcSet={desktop} media="(min-width: 1024px)" />
+          <source srcSet={tablet} media="(min-width: 768px)" />
+          <img
+            className={`${isInCart && "border-2 border-main_red"} w-full rounded-main_rounded`}
+            src={mobile}
+            alt={name}
+            loading="lazy"
+            onLoad={() => setImageLoading(true)}
+          />
+        </picture>
 
         <div className={`${!imageLoading ? "hidden" : "flex"} justify-center`}>
           {isInCart ? (
