@@ -34,7 +34,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-rose50 font-red_hat_text min-h-screen gap-8 flex md:flex-row flex-col lg:px-padding_x_large px-padding_x_small sm:py-padding_y py-padding_y_small">
+    <div className="bg-rose50 font-red_hat_text min-h-screen max-w-[1920px] gap-8 flex mx-auto w-full md:flex-row flex-col lg:px-padding_x_large px-padding_x_small sm:py-padding_y py-padding_y_small">
       <CartItemsProvider>
         <main className="flex-1 grid">
           <header>
