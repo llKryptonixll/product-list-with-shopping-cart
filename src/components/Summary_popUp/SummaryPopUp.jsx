@@ -29,7 +29,6 @@ const SummaryPopUp = ({ popUpIsOpen, setPopUpIsOpen }) => {
 
     return (
         <dialog
-            role="dialog" 
             aria-label="Order Confirmed: Your order has been successfully placed and the details are listed below."
             className={`${popUpIsOpen && "grid"} fixed bg-black bg-opacity-40 w-full h-full place-items-center top-0 left-0 sm:p-8 animate-fade overflow-y-auto`}
         >

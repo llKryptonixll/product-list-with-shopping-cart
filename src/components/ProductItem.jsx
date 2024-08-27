@@ -80,7 +80,7 @@ const ProduktItem = ({ productItem }) => {
               className={`${mainBtnStyles} bg-white justify-center border-[1px] text-rose900 space-x-2 border-rose500 hover:border-main_red hover:text-main_red transition-colors`}
             >
               <img src="./assets/images/icon-add-to-cart.svg" alt="A shopping cart" />
-              <p className="font-semibold">Add to Cart</p>
+              <span className="font-semibold">Add to Cart</span>
             </button>
           )}
         </div>
