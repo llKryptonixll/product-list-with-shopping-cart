@@ -29,14 +29,16 @@ const SummaryPopUp = ({ popUpIsOpen, setPopUpIsOpen }) => {
 
     return (
         <dialog
-            aria-label="Order Confirmed: Your order has been successfully placed and the details are listed below."
+            aria-labelledby="dialog-title"
+            aria-describedby="dialog-description"
             className={`${popUpIsOpen && "grid"} fixed bg-black bg-opacity-40 w-full h-full place-items-center top-0 left-0 sm:p-8 animate-fade overflow-y-auto`}
         >
             <div className="bg-white sm:max-w-[600px] w-full sm:mt-0 mt-24 p-8 grid gap-8 sm:self-auto self-end sm:rounded-main_rounded rounded-t-main_rounded animate-fade">
                 <img src="./assets/images/icon-order-confirmed.svg" alt="Green checked icon" />
                 <div className="grid gap-2">
-                    <p className="text-rose900 font-bold text-4xl">Order Confirmed</p>
+                    <p id="dialog-title" className="text-rose900 font-bold text-4xl">Order Confirmed</p>
                     <p className="text-rose500">We Hope you enjoy your food!</p>
+                    <p className="hidden" id="dialog-description">Your order has been successfully placed and the details are listed below.</p>
                 </div>
 
                 <div className="bg-rose50 grid gap-8 rounded-lg p-4">
